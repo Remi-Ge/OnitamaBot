@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnitamaBot", "OnitamaBot.csproj", "{EA8A5EC5-CA46-8EEB-FA6E-0B12B023840C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA8A5EC5-CA46-8EEB-FA6E-0B12B023840C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA8A5EC5-CA46-8EEB-FA6E-0B12B023840C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA8A5EC5-CA46-8EEB-FA6E-0B12B023840C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA8A5EC5-CA46-8EEB-FA6E-0B12B023840C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC15C03D-0BE3-4C78-AEE2-843BA20061AA}
+	EndGlobalSection
+EndGlobal
