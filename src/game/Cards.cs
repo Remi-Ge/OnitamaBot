@@ -41,4 +41,18 @@ public class Card {
         }
         return result;
     }
+
+    public static void Shuffle()
+    {
+        Random rand = new Random();
+        int n = Cards.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rand.Next(n + 1);
+            Card value = Cards[k];
+            Cards[k] = Cards[n];
+            Cards[n] = value;
+        }
+    }
 }
