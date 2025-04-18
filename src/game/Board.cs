@@ -1,4 +1,4 @@
-class Board {
+public class Board {
     public Card ExtraCard { get; }
     public List<List<Card>> PlayerCards { get; }
     public bool IsBlueTurn { get; }
