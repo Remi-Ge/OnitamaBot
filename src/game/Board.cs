@@ -21,6 +21,51 @@ public class Board {
         this.IsBlueTurn = ExtraCard.IsBlue;
     }
 
+    public Board(Board board) {
+        this.ExtraCard = board.ExtraCard;
+        this.PlayerCards = new List<List<Card>>() {
+            new List<Card>(board.PlayerCards[0]),
+            new List<Card>(board.PlayerCards[1])
+        };
+        this.IsBlueTurn = board.IsBlueTurn;
+        this.Position = (int[,])board.Position.Clone();
+    }
+
+    public bool? isBlueWinner() {
+        if (this.Position[0, 2] == 2) {
+            return false;
+        }
+        if (this.Position[4, 2] == -2) {
+            return true;
+        }
+        bool redExists = false;
+        bool blueExists = false;
+
+        for (int row = 0; row < 5; row++)
+        {
+            for (int col = 0; col < 5; col++)
+            {
+                if (this.Position[row, col] == 2)
+                {
+                    blueExists = true;
+                }
+                if (this.Position[row, col] == -2)
+                {
+                    redExists = true;
+                }
+            }
+        }
+        if (!redExists)
+        {
+            return true;
+        }
+        if (!blueExists)
+        {
+            return false;
+        }
+        return null;
+    }
+
     public void show() {
         for (int i = 0; i < 2; i++) {
             Console.Write($"Player {(i == 0 ? "Blue" : "Red")}: ");
