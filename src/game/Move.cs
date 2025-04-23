@@ -37,4 +37,21 @@ public class Move {
         }
         return moves;
     }
+
+    public static string getSquareNotation(KeyValuePair<int, int> square) {
+        return ((char)(square.Key + 'a')).ToString() + (5 - square.Value).ToString();
+    }
+
+    public string getNotation() {
+        return $"{getSquareNotation(From)}{getSquareNotation(To)} {UsedCard.Name}";
+    }
+
+    public static Move? Parse(string notation, List<Move> legalMoves) {
+        foreach (Move move in legalMoves) {
+            if (notation == move.getNotation()) {
+                return move;
+            }
+        }
+        return null;
+    }
 }

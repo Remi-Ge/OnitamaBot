@@ -1,7 +1,7 @@
 public class Board {
-    public Card ExtraCard { get; }
-    public List<List<Card>> PlayerCards { get; }
-    public bool IsBlueTurn { get; }
+    public Card ExtraCard { get; set; }
+    public List<List<Card>> PlayerCards { get; set; }
+    public bool IsBlueTurn { get; set; }
 
     public int[,] Position { get; } = new int[5, 5] {
         {-1, -1, -2, -1, -1},
@@ -42,5 +42,14 @@ public class Board {
             Console.WriteLine("|");
             Console.WriteLine("+---+---+---+---+---+");
         }
+    }
+
+    public void MakeMove(Move move) {
+        this.Position[move.To.Value, move.To.Key] = Position[move.From.Value, move.From.Key];
+        this.Position[move.From.Value, move.From.Key] = 0;
+        this.IsBlueTurn = !this.IsBlueTurn;
+        this.PlayerCards[IsBlueTurn ? 1 : 0].Remove(move.UsedCard);
+        this.PlayerCards[IsBlueTurn ? 0 : 1].Add(this.ExtraCard);
+        this.ExtraCard = move.UsedCard;
     }
 }
