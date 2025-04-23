@@ -13,9 +13,16 @@ public class DepthSearch
             moveScores.Add(new MoveScore(move, moveScore.Score));
         }
         if (board.IsBlueTurn) {
-            return moveScores.OrderByDescending(ms => ms.Score).First();
+            double maxScore = moveScores.Max(ms => ms.Score);
+            List<MoveScore> best = moveScores.Where(ms => ms.Score == maxScore).ToList();
+            Random rd = new Random();
+            return best[rd.Next(best.Count)];
+        } else {
+            double minScore = moveScores.Min(ms => ms.Score);
+            List<MoveScore> best = moveScores.Where(ms => ms.Score == minScore).ToList();
+            Random rd = new Random();
+            return best[rd.Next(best.Count)];
         }
-        return moveScores.OrderBy(ms => ms.Score).First(); 
     }
 
     public struct MoveScore
