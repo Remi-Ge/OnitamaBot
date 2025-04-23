@@ -1,27 +1,32 @@
 public class DepthSearch
 {
-    public static int Search(Board board, int depth)
-    {
-        if (depth == 0)
-        {
-            return 0;
-        }
-
-        double score = Evaluation.Evaluate(board);
-        Console.WriteLine($"Score: {score}");
-
+    public static MoveScore GetBestMove(Board board, int depth) {
         List<Move> moves = Move.GenerateMoves(board);
-        if (moves.Count == 0)
-        {
-            return 0;
+        if (moves.Count == 0 || depth == 0) {
+            return new MoveScore(null, Evaluation.Evaluate(board));
         }
-        int count = 0;
-        foreach (Move move in moves)
-        {
+        List<MoveScore> moveScores = new List<MoveScore>();
+        foreach (Move move in moves) {
             Board newBoard = new Board(board);
             newBoard.MakeMove(move);
-            count += Search(newBoard, depth - 1);
+            MoveScore moveScore = GetBestMove(newBoard, depth - 1);
+            moveScores.Add(new MoveScore(move, moveScore.Score));
         }
-        return count + moves.Count;
+        if (board.IsBlueTurn) {
+            return moveScores.OrderByDescending(ms => ms.Score).First();
+        }
+        return moveScores.OrderBy(ms => ms.Score).First(); 
+    }
+
+    public struct MoveScore
+    {
+        public Move? Move;
+        public double Score;
+
+        public MoveScore(Move? move, double score)
+        {
+            Move = move;
+            Score = score;
+        }
     }
 }

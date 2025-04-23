@@ -22,6 +22,6 @@ public class Evaluation {
                 }
             }
         }
-        return score;
+        return Math.Round(score, 2);
     }
 }

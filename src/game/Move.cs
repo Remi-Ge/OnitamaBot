@@ -11,6 +11,9 @@ public class Move {
 
     public static List<Move> GenerateMoves(Board board) {
         List<Move> moves = new List<Move>();
+        if (board.isBlueWinner() != null) {
+            return moves;
+        }
         for (int row = 0; row < 5; row++) {
             for (int col = 0; col < 5; col++) {
                 if (board.Position[row, col] * (board.IsBlueTurn ? 1 : -1) > 0) {
