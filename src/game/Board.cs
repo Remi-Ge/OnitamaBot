@@ -94,7 +94,7 @@ public class Board {
         this.Position[move.From.Value, move.From.Key] = 0;
         this.IsBlueTurn = !this.IsBlueTurn;
         this.PlayerCards[IsBlueTurn ? 1 : 0].Remove(move.UsedCard);
-        this.PlayerCards[IsBlueTurn ? 0 : 1].Add(this.ExtraCard);
+        this.PlayerCards[IsBlueTurn ? 1 : 0].Add(this.ExtraCard);
         this.ExtraCard = move.UsedCard;
     }
 }
