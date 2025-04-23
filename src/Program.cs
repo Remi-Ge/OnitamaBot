@@ -22,7 +22,7 @@
                     Console.WriteLine("Invalid move. Try again.");
                 }
             } else {
-                DepthSearch.MoveScore bestMove = DepthSearch.GetBestMove(board, 4);
+                DepthSearch.MoveScore bestMove = DepthSearch.GetBestMove(board, 5);
                 if (bestMove.Move != null) {
                     Console.WriteLine($"{bestMove.Move.getNotation()} {bestMove.Score}");
                     board.MakeMove(bestMove.Move);
